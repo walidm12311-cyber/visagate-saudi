@@ -347,6 +347,78 @@ h1, h2, h3, h4 {
   font-weight: 500;
 }
 
+/* ---------- Gallery ---------- */
+.gallery {
+  padding: 80px 0 90px;
+  overflow: hidden;
+}
+
+.gallery-heading {
+  text-align: center;
+  margin-bottom: 46px;
+}
+
+.gallery-track-wrap {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+
+.gallery-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: gallery-scroll 36s linear infinite;
+}
+
+.gallery-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes gallery-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.gallery-card {
+  flex-shrink: 0;
+  width: 240px;
+  height: 300px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: var(--white);
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.gallery-card:nth-child(6n+1) { background: linear-gradient(160deg, var(--green-dark), var(--green)); }
+.gallery-card:nth-child(6n+2) { background: linear-gradient(160deg, var(--gold-dark), var(--gold)); }
+.gallery-card:nth-child(6n+3) { background: linear-gradient(160deg, var(--green), #22794a); }
+.gallery-card:nth-child(6n+4) { background: linear-gradient(160deg, var(--green-dark), var(--gold-dark)); }
+.gallery-card:nth-child(6n+5) { background: linear-gradient(160deg, var(--gold), var(--green)); }
+.gallery-card:nth-child(6n+6) { background: linear-gradient(160deg, #22794a, var(--green-dark)); }
+
+.gallery-icon {
+  font-size: 3rem;
+}
+
+.gallery-caption {
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
+  padding: 0 20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-track {
+    animation: none;
+  }
+}
+
 /* ---------- Services ---------- */
 .services {
   padding: 90px 0;
@@ -1154,6 +1226,9 @@ h1, h2, h3, h4 {
 
 @media (max-width: 640px) {
   .stats-grid { grid-template-columns: 1fr 1fr; row-gap: 26px; }
+  .gallery { padding: 60px 0 70px; }
+  .gallery-card { width: 180px; height: 230px; }
+  .gallery-icon { font-size: 2.2rem; }
   .form-row { grid-template-columns: 1fr; }
   .voucher-row { flex-direction: column; align-items: stretch; }
   .modal-body { padding: 22px; }
